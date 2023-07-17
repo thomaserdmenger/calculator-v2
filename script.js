@@ -12,6 +12,9 @@ const equalsButton = document.querySelector('[data-equals]')
 
 const display = document.querySelector('[data-content]')
 
+let period = document.querySelector('#period')
+let periodFlag = false
+
 let clearDisplay = false // flag to clear the display
 let currentNumber = ''
 let previousNumber = ''
@@ -63,16 +66,42 @@ function handleNumber(e) {
   if (display.textContent === '0') {
     currentNumber = e.target.textContent
     display.textContent = currentNumber
+    console.log('1: ', currentNumber)
+
+    if (currentNumber.includes('.')) {
+      period.disabled = true
+      periodFlag = true
+    } else {
+      period.disabled = false
+      periodFlag = false
+    }
   } else {
     if (clearDisplay === true) {
       display.textContent = ''
       currentNumber = e.target.textContent
       display.textContent += currentNumber
-      console.log(currentNumber)
+      // console.log('2: ', currentNumber)
       clearDisplay = false
+
+      if (currentNumber.includes('.')) {
+        period.disabled = true
+        periodFlag = true
+      } else {
+        period.disabled = false
+        periodFlag = false
+      }
     } else {
       display.textContent += e.target.textContent
       currentNumber = display.textContent
+      // console.log('3: ', currentNumber)
+
+      if (currentNumber.includes('.')) {
+        period.disabled = true
+        periodFlag = true
+      } else {
+        period.disabled = false
+        periodFlag = false
+      }
     }
   }
 }
