@@ -13,13 +13,14 @@ const equalsButton = document.querySelector('[data-equals]')
 const display = document.querySelector('[data-content]')
 
 let period = document.querySelector('#period')
-let periodFlag = false
 
+// set variables
 let clearDisplay = false // flag to clear the display
 let currentNumber = ''
 let previousNumber = ''
 let operation = ''
 let result = ''
+let periodFlag = false
 
 // basic functions
 function add(a, b) {
