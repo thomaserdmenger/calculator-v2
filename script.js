@@ -15,8 +15,45 @@ const display = document.querySelector('[data-content]')
 let clearDisplay = false // flag to clear the display
 let currentNumber = ''
 let previousNumber = ''
-// console.log(clearDisplay)
-console.log(previousNumber)
+let operation = ''
+
+// basic functions
+function add(a, b) {
+  return a + b
+}
+
+function subtract(a, b) {
+  return a - b
+}
+
+function multiply(a, b) {
+  return a * b
+}
+
+function divide(a, b) {
+  if (a === 0) {
+    return 'ERROR'
+  } else {
+    return a / b
+  }
+}
+
+// operation function
+function operate(operator, num1, num2) {
+  if (operator === '+') {
+    // console.log(operator)
+    return add(num1, num2)
+  } else if (operator === '−') {
+    return subtract(num1, num2)
+  } else if (operator === '×') {
+    return multiply(num1, num2)
+  } else if (operator === '÷') {
+    return divide(num1, num2)
+  } else {
+    // handle invalid operator
+    return 'Does not work'
+  }
+}
 
 // add event listener on numbers
 numbersArray.forEach(number => number.addEventListener('click', handleNumber))
@@ -29,7 +66,7 @@ function handleNumber(e) {
       display.textContent = ''
       display.textContent += e.target.textContent
       currentNumber = e.target.textContent
-      // clearDisplay = false
+      clearDisplay = false
     } else {
       display.textContent += e.target.textContent
       currentNumber = display.textContent
@@ -42,8 +79,9 @@ operationsArray.forEach(operation => operation.addEventListener('click', handleO
 
 function handleOperation(e) {
   clearDisplay = true
-  const operation = e.target.textContent
+  operation = e.target.textContent
   previousNumber = display.textContent
+  console.log(previousNumber)
 }
 
 // add event listener on equals operation
@@ -53,7 +91,7 @@ function handleEquals() {
   console.log(currentNumber)
   console.log(previousNumber)
 
-  const result = Number(previousNumber) + Number(currentNumber)
+  let result = operate(operation, Number(previousNumber), Number(currentNumber))
   display.textContent = result
-  console.log(result)
+  // console.log(result)
 }
