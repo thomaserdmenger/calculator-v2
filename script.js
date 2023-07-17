@@ -16,6 +16,7 @@ let clearDisplay = false // flag to clear the display
 let currentNumber = ''
 let previousNumber = ''
 let operation = ''
+let result = ''
 
 // basic functions
 function add(a, b) {
@@ -51,7 +52,7 @@ function operate(operator, num1, num2) {
     return divide(num1, num2)
   } else {
     // handle invalid operator
-    return 'Does not work'
+    return 0
   }
 }
 
@@ -60,12 +61,15 @@ numbersArray.forEach(number => number.addEventListener('click', handleNumber))
 
 function handleNumber(e) {
   if (display.textContent === '0') {
-    display.textContent = e.target.textContent
+    currentNumber = e.target.textContent
+    console.log(currentNumber)
+    display.textContent = currentNumber
   } else {
     if (clearDisplay === true) {
       display.textContent = ''
-      display.textContent += e.target.textContent
       currentNumber = e.target.textContent
+      display.textContent += currentNumber
+      console.log(currentNumber)
       clearDisplay = false
     } else {
       display.textContent += e.target.textContent
@@ -78,10 +82,9 @@ function handleNumber(e) {
 operationsArray.forEach(operation => operation.addEventListener('click', handleOperation))
 
 function handleOperation(e) {
-  clearDisplay = true
   operation = e.target.textContent
   previousNumber = display.textContent
-  console.log(previousNumber)
+  clearDisplay = true
 }
 
 // add event listener on equals operation
@@ -91,7 +94,18 @@ function handleEquals() {
   console.log(currentNumber)
   console.log(previousNumber)
 
-  let result = operate(operation, Number(previousNumber), Number(currentNumber))
+  result = operate(operation, Number(previousNumber), Number(currentNumber))
+  // display.textContent = result.toFixed(2)
   display.textContent = result
   // console.log(result)
 }
+
+// clear display
+clearButton.addEventListener('click', () => {
+  location.reload()
+})
+
+// add percentage
+percentageButton.addEventListener('click', () => {
+  display.textContent = display.textContent / 100
+})
