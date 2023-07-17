@@ -62,7 +62,6 @@ numbersArray.forEach(number => number.addEventListener('click', handleNumber))
 function handleNumber(e) {
   if (display.textContent === '0') {
     currentNumber = e.target.textContent
-    console.log(currentNumber)
     display.textContent = currentNumber
   } else {
     if (clearDisplay === true) {
@@ -95,9 +94,12 @@ function handleEquals() {
   console.log(previousNumber)
 
   result = operate(operation, Number(previousNumber), Number(currentNumber))
-  // display.textContent = result.toFixed(2)
-  display.textContent = result
-  // console.log(result)
+
+  if (result.length < 8) {
+    display.textContent = result
+  } else {
+    display.textContent = Math.round(result * 100) / 100
+  }
 }
 
 // clear display
@@ -108,4 +110,9 @@ clearButton.addEventListener('click', () => {
 // add percentage
 percentageButton.addEventListener('click', () => {
   display.textContent = display.textContent / 100
+})
+
+// delete last number
+deleteButton.addEventListener('click', () => {
+  display.textContent = display.textContent.slice(0, -1)
 })
