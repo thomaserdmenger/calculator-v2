@@ -22,27 +22,15 @@ console.log(previousNumber)
 numbersArray.forEach(number => number.addEventListener('click', handleNumber))
 
 function handleNumber(e) {
-  // put first number to operate function
-  let firstNumber = display.textContent // TODO: Use this as the previous number read from screen
-  // let secondNumber = e.target.textContent
-
-  // console.log(clearDisplay)
-
   if (display.textContent === '0') {
     display.textContent = e.target.textContent
   } else {
     if (clearDisplay === true) {
-      // console.log('TRUE')
       display.textContent = ''
       display.textContent += e.target.textContent
-      currentNumber = display.textContent
-
-      clearDisplay = false
-      // currentNumber = display.textContent
-      // console.log(currentNumber)
-      // console.log(clearDisplay)
+      currentNumber = e.target.textContent
+      // clearDisplay = false
     } else {
-      // console.log('FALSE')
       display.textContent += e.target.textContent
       currentNumber = display.textContent
     }
@@ -54,12 +42,8 @@ operationsArray.forEach(operation => operation.addEventListener('click', handleO
 
 function handleOperation(e) {
   clearDisplay = true
-  // console.log(clearDisplay)
-
   const operation = e.target.textContent
   previousNumber = display.textContent
-  // console.log(operation)
-  // console.log(previousNumber)
 }
 
 // add event listener on equals operation
