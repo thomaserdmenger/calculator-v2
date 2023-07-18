@@ -110,33 +110,29 @@ function handleOperation(e) {
   display.textContent = operation
 }
 
-// add event listener on equals operation
+// Add event listener to equals operation
 equalsButton.addEventListener('click', handleEquals)
 
 function handleEquals() {
-  console.log(currentNumber)
-  console.log(previousNumber)
-
-  result = operate(operation, Number(previousNumber), Number(currentNumber))
-
-  if (result.length < 8) {
-    display.textContent = result
-  } else {
-    display.textContent = Math.round(result * 100) / 100
-  }
+  number1 = Number(number1)
+  number2 = Number(number2)
+  let result = operate(operation, number1, number2)
+  display.textContent = result
 }
 
-// clear display
+// Clear display
 clearButton.addEventListener('click', () => {
   location.reload()
 })
 
-// add percentage
+// Add percentage
 percentageButton.addEventListener('click', () => {
   display.textContent = display.textContent / 100
 })
 
-// delete last number
+// TODO: Delete last number
 deleteButton.addEventListener('click', () => {
+  console.log(number1.slice(0, -1))
+  console.log(number2)
   display.textContent = display.textContent.slice(0, -1)
 })
