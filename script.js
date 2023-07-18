@@ -12,15 +12,6 @@ const equalsButton = document.querySelector('[data-equals]')
 
 const display = document.querySelector('[data-content]')
 
-// let periodButton = document.querySelector('#period')
-
-// set variables
-// let clearDisplay = false // flag to clear the display
-// let currentNumber = ''
-// let previousNumber = ''
-// let operation = ''
-// let result = ''
-
 // Set new variables
 let number1 = null
 let number2 = null
@@ -60,7 +51,7 @@ function operate(operator, num1, num2) {
     return divide(num1, num2)
   } else {
     // handle invalid operator
-    return 0
+    return result
   }
 }
 
@@ -107,7 +98,7 @@ operationsArray.forEach(operation => operation.addEventListener('click', handleO
 
 function handleOperation(e) {
   operation = e.target.textContent
-  display.textContent = operation
+  display.textContent = number1
 }
 
 // Add event listener to equals operation
