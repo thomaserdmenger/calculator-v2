@@ -102,13 +102,12 @@ function handleNumber(e) {
   }
 }
 
-// add event listener on operations
+// Add event listener to operations
 operationsArray.forEach(operation => operation.addEventListener('click', handleOperation))
 
 function handleOperation(e) {
   operation = e.target.textContent
-  previousNumber = display.textContent
-  clearDisplay = true
+  display.textContent = operation
 }
 
 // add event listener on equals operation
