@@ -116,8 +116,14 @@ equalsButton.addEventListener('click', handleEquals)
 function handleEquals() {
   number1 = Number(number1)
   number2 = Number(number2)
+  console.log('number1: ' + number1)
+  console.log('number2: ' + number2)
   let result = operate(operation, number1, number2)
+
   display.textContent = result
+  number1 = result
+  number2 = null
+  operation = null
 }
 
 // Clear display
@@ -125,7 +131,7 @@ clearButton.addEventListener('click', () => {
   location.reload()
 })
 
-// Add percentage
+// TODO: Add percentage (does not work with operations)
 percentageButton.addEventListener('click', () => {
   display.textContent = display.textContent / 100
 })
