@@ -74,7 +74,11 @@ function handleNumber(e) {
   if (operation === null) {
     // No operation selected yet, update number1
     if (number1 === null) {
-      number1 = buttonValue
+      if (buttonValue === '.') {
+        number1 = '0.'
+      } else {
+        number1 = buttonValue
+      }
     } else if (buttonValue === '.' && !number1.includes('.')) {
       number1 += buttonValue
     } else if (buttonValue !== '.') {
@@ -84,7 +88,11 @@ function handleNumber(e) {
   } else {
     // Operation selected, update number2
     if (number2 === null) {
-      number2 = buttonValue
+      if (buttonValue === '.') {
+        number2 = '0.'
+      } else {
+        number2 = buttonValue
+      }
     } else if (buttonValue === '.' && !number2.includes('.')) {
       number2 += buttonValue
     } else if (buttonValue !== '.') {
@@ -92,65 +100,6 @@ function handleNumber(e) {
     }
     display.textContent = number2
   }
-
-  // console.log(buttonValue)
-  // console.log(number1)
-
-  // if (!display.textContent.includes('.') && periodFlag === false) {
-  //   display.textContent += e.target.textContent
-
-  //   console.log('does not includes')
-  //   console.log(display.textContent)
-  // } else if (display.textContent.includes('.')) {
-  //   periodFlag = true
-  //   periodButton.disbled = true
-  //   display.textContent += e.target.textContent
-
-  //   console.log('includes')
-  //   console.log(display.textContent)
-  // }
-
-  // if (display.textContent === '0') {
-  //   currentNumber = e.target.textContent
-  //   display.textContent = currentNumber
-  //   // console.log('1: ', currentNumber)
-
-  //   if (currentNumber.includes('.')) {
-  //     period.disabled = true
-  //     periodFlag = true
-  //   } else {
-  //     period.disabled = false
-  //     periodFlag = false
-  //   }
-  // } else {
-  //   if (clearDisplay === true) {
-  //     display.textContent = ''
-  //     currentNumber = e.target.textContent
-  //     display.textContent += currentNumber
-  //     // console.log('2: ', currentNumber)
-  //     clearDisplay = false
-
-  //     if (currentNumber.includes('.')) {
-  //       period.disabled = true
-  //       periodFlag = true
-  //     } else {
-  //       period.disabled = false
-  //       periodFlag = false
-  //     }
-  //   } else {
-  //     display.textContent += e.target.textContent
-  //     currentNumber = display.textContent
-  //     // console.log('3: ', currentNumber)
-
-  //     if (currentNumber.includes('.')) {
-  //       period.disabled = true
-  //       periodFlag = true
-  //     } else {
-  //       period.disabled = false
-  //       periodFlag = false
-  //     }
-  //   }
-  // }
 }
 
 // add event listener on operations
